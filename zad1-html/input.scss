@@ -1,0 +1,57 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-weight: bold;
+    font-size: 14px;
+    color: #fefefe;
+    background-color: #eee;
+}
+
+@mixin centerText($padding) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: $padding;  
+}
+
+.menu-box {
+    // border: 1px solid black;
+    position: fixed;
+    height: 100vh;
+    width: 20%;
+    background-color: silver;
+    z-index: 1;
+    @include centerText(8px);
+}
+
+.grid-boxes {
+    // border: 1px solid black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 15px;
+    padding: 30px;
+
+    & div {
+        background-color: silver;
+        @include centerText(8px);
+    }
+}
+
+.grid-box-1 { grid-column: 1/13; grid-row: 1/3; }
+.grid-box-2 { grid-column: 5/9; grid-row: 3/5; }
+.grid-box-3 { grid-column: 1/3; grid-row: 5/11; }
+.grid-box-4 { grid-column: 4/8; grid-row: 5/8; }
+.grid-box-5 { grid-column: 9/13; grid-row: 5/8; }
+.grid-box-6 { grid-column: 4/13; grid-row: 8/11; }
+
