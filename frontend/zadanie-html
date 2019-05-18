@@ -1,0 +1,15 @@
+Zadanie HTML
+
+Zadanie polega na stworzeniu strony HTML + CSS (mile widziany sass/less), której układ elementów na stronie byłby zgodny z załączonym schematem (zadanie-html.png)
+
+Wymagania:
+- Niedozwolone jest używanie bibliotek zewnętrznych
+- Wewnątrz elementów BOX i MENU BOX należy umieścić tekst o wybranej długości wygenerowany ze strony https://loremipsum.io/generator/?n=100&t=w
+- Tekst należy odsunąć od wewnętrznych krawędzi elementów
+- Wszystkie elementy powinny być tak stworzone, aby dodanie lub usunięcie fragmentu tekstu nie zmieniało znacząco układu elementów
+- Element MENU BOX powinien zajmować 100% wysokości okna przeglądarki i pozostawać nieruchomy na ekranie pomimo scrollowania
+- Pozostałe elementy powinny się poruszać wraz ze scrollem, jeżeli wysokość okna przeglądarki nie umożliwia, aby wszystkie były jednocześnie widoczne
+- Odległości między elementami i wewnątrz nich mogą być dowolnie wybrane, jednak powinny być zauważalne (wartości raczej większe niż 5 pikseli)
+
+
+Prośba o umieszczenie rozwiązania w publicznie dostępnym repozytorium systemu kontroli wersji git (github, bitbucket, gitlab itp.)

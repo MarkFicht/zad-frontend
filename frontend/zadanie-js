@@ -1,0 +1,35 @@
+Zadanie
+
+Zadanie będzie polegało na napisanie skryptu w języku JavaScript, który będzie pobierał dane ze strony https://www.reddit.com/r/funny.json oraz dokona na nich następujące operacje:
+
+1) napisać funkcję, która przekształci dane do struktury:
+
+{
+"posts": [
+    {
+        "title": "put title here",
+        "upvotes": 1234,
+        "downvotes": 234,
+        "score": 1000,
+        "num_comments": 100,
+        "created": "16.05.2019 12:12",
+    },
+    ...
+],
+"count": 10
+}
+
+2) napisać funkcję, która umożliwi sortowanie po "upvotes", "downvotes", "score" lub dacie "created" w zależności od przekazanego parametru
+3) napisać funkcję, która zwróci tytuł postu z najwyższym stosunkiem głosów dodatnich i ujemnych (w przypadku kilku postów o jednakowych współczynnikach, wybrać najnowszy z nich)
+4) napisać funkcję, która wyświetli posty tylko z ostatniego dnia (24h wstecz)
+
+*5) dodatkowy inferfejs graficzny będzie dodatkowo punktowany
+
+
+Wymagania techniczne:
+
+- czysty JavaScript (bez bibliotek typu lodash)
+- README z opisem projektu
+- testy
+
+Prośba o umieszczenie rozwiązania w publicznie dostępnym repozytorium systemu kontroli wersji git (github, bitbucket, gitlab itp.)
