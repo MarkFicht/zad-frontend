@@ -6,17 +6,20 @@
 body {
   font-weight: bold;
   font-size: 14px;
-  color: #262626;
+  color: #787878;
   background-color: #eee; }
 
-.container {
+.loading {
+  font-size: 36px;
+  text-align: center;
+  padding-top: 100px; }
+
+#container {
   max-width: 700px;
-  border: 1px solid red;
   margin: 20px auto; }
 
 .container-btns {
   width: 100%;
-  border: 1px solid green;
   display: flex;
   justify-content: center; }
   .container-btns button {
@@ -27,16 +30,22 @@ body {
 
 .post {
   width: 80%;
-  border: 1px solid blue;
+  background-color: #ccc;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
-  margin: 8px auto; }
+  margin: 10px auto;
+  padding: 7px; }
   .post .post__title {
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 5px;
+    color: #343;
+    font-size: 16px; }
   .post > div {
     width: 100%;
-    border: 1px solid red;
     display: flex;
     justify-content: space-between; }
+    .post > div span {
+      color: #454; }
 
 /*# sourceMappingURL=output.css.map */
