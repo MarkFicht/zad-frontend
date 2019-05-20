@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var btnSortByBest = document.querySelector('#by-best')
     var btnSortByLastDay = document.querySelector('#by-last-day')
 
+
     function convertToDataString (time, format) {
         var t = new Date(time * 1000)
         var tf = function (i) { return (i < 10 ? '0' : '') + i }
@@ -39,22 +40,37 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
+    function prepareListsPosts (param) {
+        return ( 
+            '<div class="post">' +
+                '<header class="post__title">'+ param.title +'</header>' +
+                '<div>' +
+                    '<div class="post__created"><span>Create: </span>'+ param.created +',</div>' +
+                    '<div class="post__score"><span>Score: </span>'+ param.score +',</div>' +
+                    '<div class="post__comments"><span>Comments: </span>'+ param.num_comments +',</div>' +
+                    '<div class="post__upv"><span>Likes: </span>'+ param.upvotes +',</div>' +
+                    '<div class="post__downv"><span>Dislikes: </span>'+ param.downvotes +'.</div>' +
+                '</div>' +
+            '</div>')
+    }
+
     function renderPosts (data) {
         containerPosts.innerHTML = ''
         var newPostsList = ''
 
         data.posts.forEach(function(post) {
-            newPostsList += 
-            '<div class="post">' +
-                '<header class="post__title">'+ post.title +'</header>' +
-                '<div>' +
-                    '<div class="post__created"><span>Create: </span>'+ post.created +',</div>' +
-                    '<div class="post__score"><span>Score: </span>'+ post.score +',</div>' +
-                    '<div class="post__comments"><span>Comments: </span>'+ post.num_comments +',</div>' +
-                    '<div class="post__upv"><span>Likes: </span>'+ post.upvotes +',</div>' +
-                    '<div class="post__downv"><span>Dislikes: </span>'+ post.downvotes +'.</div>' +
-                '</div>' +
-            '</div>'
+            // newPostsList += 
+            // '<div class="post">' +
+            //     '<header class="post__title">'+ post.title +'</header>' +
+            //     '<div>' +
+            //         '<div class="post__created"><span>Create: </span>'+ post.created +',</div>' +
+            //         '<div class="post__score"><span>Score: </span>'+ post.score +',</div>' +
+            //         '<div class="post__comments"><span>Comments: </span>'+ post.num_comments +',</div>' +
+            //         '<div class="post__upv"><span>Likes: </span>'+ post.upvotes +',</div>' +
+            //         '<div class="post__downv"><span>Dislikes: </span>'+ post.downvotes +'.</div>' +
+            //     '</div>' +
+            // '</div>'
+            newPostsList += prepareListsPosts( post )
         })
 
         return containerPosts.innerHTML = newPostsList
@@ -89,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
             '<div class="post">' +
                 '<header class="post__title">'+ theBestPost.title +'</header>' +
             '</div>'
-
     }
 
     function renderPostsFromLastDay (data) {
@@ -103,22 +118,23 @@ document.addEventListener('DOMContentLoaded', function () {
         containerPosts.innerHTML = ''
 
         while ( data.posts[increment].created_n*1000 > lastDayTime ) {
-            lastDayPosts +=
-                '<div class="post">' +
-                    '<header class="post__title">'+ data.posts[increment].title +'</header>' +
-                    '<div>' +
-                        '<div class="post__created"><span>Create: </span>'+ data.posts[increment].created +',</div>' +
-                        '<div class="post__score"><span>Score: </span>'+ data.posts[increment].score +',</div>' +
-                        '<div class="post__comments"><span>Comments: </span>'+ data.posts[increment].num_comments +',</div>' +
-                        '<div class="post__upv"><span>Likes: </span>'+ data.posts[increment].upvotes +',</div>' +
-                        '<div class="post__downv"><span>Dislikes: </span>'+ data.posts[increment].downvotes +'.</div>' +
-                    '</div>' +
-                '</div>'
+            // lastDayPosts +=
+            //     '<div class="post">' +
+            //         '<header class="post__title">'+ data.posts[increment].title +'</header>' +
+            //         '<div>' +
+            //             '<div class="post__created"><span>Create: </span>'+ data.posts[increment].created +',</div>' +
+            //             '<div class="post__score"><span>Score: </span>'+ data.posts[increment].score +',</div>' +
+            //             '<div class="post__comments"><span>Comments: </span>'+ data.posts[increment].num_comments +',</div>' +
+            //             '<div class="post__upv"><span>Likes: </span>'+ data.posts[increment].upvotes +',</div>' +
+            //             '<div class="post__downv"><span>Dislikes: </span>'+ data.posts[increment].downvotes +'.</div>' +
+            //         '</div>' +
+            //     '</div>'
 
-                increment++
+            lastDayPosts += prepareListsPosts( data.posts[increment] )
+
+            increment++
         }
 
-        console.log(increment)
         containerPosts.innerHTML = lastDayPosts
         increment = 0
     }
@@ -139,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
         structure.count = newArr.length
-
         renderPosts(structure)
     }
 
@@ -169,6 +184,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
+    /** First download data */
     fetch( url )
         .then(function(response) { return response.json() })
         .then(function (json) { getStructure(json) })
