@@ -59,17 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var newPostsList = ''
 
         data.posts.forEach(function(post) {
-            // newPostsList += 
-            // '<div class="post">' +
-            //     '<header class="post__title">'+ post.title +'</header>' +
-            //     '<div>' +
-            //         '<div class="post__created"><span>Create: </span>'+ post.created +',</div>' +
-            //         '<div class="post__score"><span>Score: </span>'+ post.score +',</div>' +
-            //         '<div class="post__comments"><span>Comments: </span>'+ post.num_comments +',</div>' +
-            //         '<div class="post__upv"><span>Likes: </span>'+ post.upvotes +',</div>' +
-            //         '<div class="post__downv"><span>Dislikes: </span>'+ post.downvotes +'.</div>' +
-            //     '</div>' +
-            // '</div>'
+ 
             newPostsList += prepareListsPosts( post )
         })
 
@@ -118,20 +108,8 @@ document.addEventListener('DOMContentLoaded', function () {
         containerPosts.innerHTML = ''
 
         while ( data.posts[increment].created_n*1000 > lastDayTime ) {
-            // lastDayPosts +=
-            //     '<div class="post">' +
-            //         '<header class="post__title">'+ data.posts[increment].title +'</header>' +
-            //         '<div>' +
-            //             '<div class="post__created"><span>Create: </span>'+ data.posts[increment].created +',</div>' +
-            //             '<div class="post__score"><span>Score: </span>'+ data.posts[increment].score +',</div>' +
-            //             '<div class="post__comments"><span>Comments: </span>'+ data.posts[increment].num_comments +',</div>' +
-            //             '<div class="post__upv"><span>Likes: </span>'+ data.posts[increment].upvotes +',</div>' +
-            //             '<div class="post__downv"><span>Dislikes: </span>'+ data.posts[increment].downvotes +'.</div>' +
-            //         '</div>' +
-            //     '</div>'
 
             lastDayPosts += prepareListsPosts( data.posts[increment] )
-
             increment++
         }
 
